@@ -9,9 +9,13 @@
           name: java-1.8.0-openjdk
           state: present
       - name: download tomcat
-        get_url: url=https://downloads.apache.org/tomcat/tomcat-8/v8.5.65/bin/apache-tomcat-8.5.65.zip dest=/opt/
+        become: yes
+        get_url:
+          url: https://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
+          dest: /opt/
+          mode: 0755
       - name: unarchive
-        unarchieve: src=/opt/apache-tomcat-8.5.65.zip dest=/opt/
+        unarchive: src=/opt/apache-tomcat-8.5.40.tar.gz dest=/opt/
       - name: start tomcat
         shell: /opt/apache-tomcat-8.5.65/bin/startup.sh
       - name: coping jar file
