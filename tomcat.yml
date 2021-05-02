@@ -14,3 +14,8 @@
         unarchieve: src=/opt/apache-tomcat-8.5.65.zip dest=/opt/
       - name: start tomcat
         shell: /opt/apache-tomcat-8.5.65/bin/startup.sh
+      - name: coping jar file
+        copy:
+          src: /var/lib/jenkins/workspace/CI_Pipeline/target/my-app-1.0-SNAPSHOT.jar
+          dest: /opt/
+        
