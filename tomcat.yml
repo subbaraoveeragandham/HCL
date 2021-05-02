@@ -1,0 +1,16 @@
+--- 
+  - name: install and configuration tomcat
+    hosts: 18.222.41.186
+    gather_facts: false
+    become: yes
+    tasks:
+      - name: isntalling required java
+        yum:
+          name: java-1.8.0-openjdk
+          state: present
+      - name: download tomcat
+        tomcat_url: https://downloads.apache.org/tomcat/tomcat-8/v8.5.65/bin/apache-tomcat-8.5.65.zip dest=/opt/
+      - name: unarchive
+        unarchieve: src=/opt/apache-tomcat-8.5.65.zip dest=/opt/
+      - name: start tomcat
+        shell: /opt/apache-tomcat-8.5.65/bin/startup.sh
